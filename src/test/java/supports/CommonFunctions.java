@@ -9,7 +9,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.How;
 
-public class MyWebDriver {
+public class CommonFunctions {
     private static WebDriver driver;
 
     // get string how, locator string, return WebElement

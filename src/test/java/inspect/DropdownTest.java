@@ -1,7 +1,7 @@
 package inspect;
 import org.openqa.selenium.support.How;
 
-import static supports.MyWebDriver.*;
+import static supports.CommonFunctions.*;
 
 public class DropdownTest {
     public static void main(String[] args) throws InterruptedException {
