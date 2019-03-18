@@ -8,51 +8,34 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class CommonFunctions {
     private static WebDriver driver;
+    private static String cellLocator = "//table[@id='table1']//tbody/tr[%d]/td[%d]";
 
-    // get string how, locator string, return WebElement
-    public static WebElement getElement(String how, String locator){
-
-        WebElement element = null;
-
-        if (how.equalsIgnoreCase("name")){
-            element = driver.findElement(By.name(locator));
-        } else if (how.equalsIgnoreCase("id")){
-            element = driver.findElement(By.id(locator));
-        } else if (how.equalsIgnoreCase("tagname")){
-            element = driver.findElement(By.tagName(locator));
-        } else if (how.equalsIgnoreCase("css")){
-            element = driver.findElement(By.cssSelector(locator));
-        } else if (how.equalsIgnoreCase("xpath")){
-            element = driver.findElement(By.xpath(locator));
-        } else {
-            System.err.println("locator how " + how + "not found");
-        }
-
-        return element;
-    }
     // getElement using How package
     public static WebElement getElement (How how, String locator)
     {
         return driver.findElement(how.buildBy(locator));
     }
-    // get WebElement, and input text
-    public static void fill (String how, String locator, String inputText)
+    // get a list of elements
+    public static List<WebElement> getElements (How how, String locator) {
+        return driver.findElements(how.buildBy(locator));
+    }
+    // get a table Cell
+    public static WebElement getCell (int row, int column)
     {
-        getElement(how, locator).sendKeys(inputText);
+        return getElement(How.XPATH, String.format(cellLocator, row, column));
     }
     // fill using How package
     public static void fill (How how, String locator, String inputText)
     {
         getElement(how, locator).sendKeys(inputText);
     }
-    // get WebElement, and click
-    public static void click (String how, String locator)
-    {
-        getElement(how, locator).click();
-    }
+
     // click using How package
     public static void click (How how, String locator)
     {
@@ -63,6 +46,23 @@ public class CommonFunctions {
     {
         driver.navigate().to(url);
     }
+
+    // select an option in dropdownlist by value
+    public static void selectOption(How how, String locator, String value)
+    {
+        WebElement element = getElement(how, locator);
+        Select dropdown = new Select(element);
+        dropdown.selectByValue(value);
+
+    }
+
+
+    // back to previous page
+    public static void back ()
+    {
+        driver.navigate().back();
+    }
+
     // check string and select driver
     public static void setBrowser(String name) {
 
@@ -77,15 +77,18 @@ public class CommonFunctions {
             ChromeOptions options = new ChromeOptions();
             options.setBinary("C:\\Users\\Vinh\\AppData\\Local\\CocCoc\\Browser\\Application\\browser.exe");
             driver = new ChromeDriver(options);
+        } else if(name.equalsIgnoreCase("headless")){
+            WebDriverManager.chromedriver().setup();
+            ChromeOptions options = new ChromeOptions();
+            options.setBinary("C:\\Users\\Vinh\\AppData\\Local\\CocCoc\\Browser\\Application\\browser.exe");
+            options.addArguments("--headless");
+            driver = new ChromeDriver(options);
         } else {
             System.err.println("Browser " + name + "not found");
         }
     }
 
-    public static void back ()
-    {
-        driver.navigate().back();
-    }
+
 
     public static void quit ()
     {
