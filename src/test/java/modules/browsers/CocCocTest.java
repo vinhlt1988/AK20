@@ -1,15 +1,12 @@
-package browsers;
+package modules.browsers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxBinary;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 
-public class Week3 {
+public class CocCocTest {
     public static void main(String[] args) throws InterruptedException {
         // Auto setup chromedriver
         WebDriverManager.chromedriver().setup();
@@ -47,7 +44,7 @@ public class Week3 {
         driver.findElement(By.xpath("//input[@name='username']/../../../div[2]/div/input")).sendKeys("SuperSecretPassword!");
 
         driver.findElement(By.xpath("//button[@type='submit']")).click();
-        Thread.sleep(5000);
-        driver.quit();
+        //Thread.sleep(5000);
+        //driver.quit();
     }
 }

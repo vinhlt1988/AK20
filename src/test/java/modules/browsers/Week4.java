@@ -1,7 +1,7 @@
-package browsers;
+package modules.browsers;
 import org.openqa.selenium.support.How;
 
-import static supports.MyWebDriver.*;
+import static supports.CommonFunctions.*;
 
 
 public class Week4 {
@@ -9,7 +9,7 @@ public class Week4 {
 
     public static void main(String[] args) throws InterruptedException {
 
-        setBrowser("coccoc");
+        setBrowser(browserType.COCOC);
         visit("https://the-internet.herokuapp.com/redirector");
         //click(How.XPATH, "//a[@id='redirect']");
         click(How.XPATH, "//a[.='here']");

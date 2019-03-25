@@ -1,4 +1,4 @@
-package inspect;
+package modules.inspect;
 import org.openqa.selenium.support.How;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import static supports.CommonFunctions.*;
 
 public class PrintLastnameDue50 {
     public static void main(String[] args) {
-        setBrowser("headless");
+        setBrowser(browserType.COCOC);
         visit("https://the-internet.herokuapp.com/tables");
 
         int numberOfRows = getElements(How.XPATH, "//table[@id='table1']/tbody/tr").size();
@@ -18,9 +18,9 @@ public class PrintLastnameDue50 {
 
         for(int row = 1; row <= numberOfRows; row++) {
             for (int column = 1; column <= numberOfColumns; column++) {
-                String value = getCell(row,column).getText();
+                String value = getCell(tableType.TABLE1,row,column).getText();
                 if (value.equalsIgnoreCase("$50.00"))
-                    lastnameDue50.add(getCell(row,1).getText());
+                    lastnameDue50.add(getCell(tableType.TABLE1, row,1).getText());
             }
         }
         quit();

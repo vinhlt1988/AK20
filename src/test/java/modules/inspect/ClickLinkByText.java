@@ -1,11 +1,11 @@
-package inspect;
+package modules.inspect;
 import org.openqa.selenium.support.How;
 
 import static supports.CommonFunctions.*;
 
 public class ClickLinkByText {
     public static void main(String[] args) throws InterruptedException {
-        setBrowser("coccoc");
+        setBrowser(browserType.COCOC);
         visit("https://the-internet.herokuapp.com/redirector");
         //click(How.XPATH, "//a[@id='redirect']");
         click(How.XPATH, "//a[.='here']");

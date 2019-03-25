@@ -1,4 +1,4 @@
-package browsers;
+package modules.browsers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;

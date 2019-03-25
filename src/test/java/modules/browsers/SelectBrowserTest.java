@@ -1,4 +1,4 @@
-package browsers;
+package modules.browsers;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -8,8 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.How;
-
-import java.util.Scanner;
 
 public class SelectBrowserTest {
     public static WebDriver driver;

@@ -1,4 +1,4 @@
-package inspect;
+package modules.inspect;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.How;
@@ -9,7 +9,7 @@ import static supports.CommonFunctions.*;
 
 public class CheckboxTest {
     public static void main(String[] args) throws InterruptedException {
-        setBrowser("coccoc");
+        setBrowser(browserType.COCOC);
         visit("https://the-internet.herokuapp.com/checkboxes");
         Thread.sleep(1000);
 
